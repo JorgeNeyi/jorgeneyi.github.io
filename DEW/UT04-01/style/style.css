@@ -25,8 +25,12 @@ label {
     margin: 10px 0 5px;
 }
 
+input{
+    width:80%;
+}
+
 input, select, textarea, button {
-    width: 80%;
+    width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
