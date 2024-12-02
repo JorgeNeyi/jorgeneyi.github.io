@@ -79,18 +79,39 @@
     </form>
 
     <script>
-        function togglePassword() {
+        function togglePassword()
+        {
             const passwordField = document.getElementById("password");
             passwordField.type = passwordField.type === "password" ? "text" : "password";
         }
 
         document.getElementById("user-form").addEventListener("submit", function (event) {
-            const form = event.target;
-            if (!form.checkValidity()) {
-                event.preventDefault();
-                alert("Por favor, rellena todos los campos correctamente antes de enviar.");
+        const form = event.target;
+        const checkboxes = form.querySelectorAll('input[type="checkbox"][name="hobbies"]');
+        const checked = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+
+        let messages = [];
+
+        // Validar checkboxes
+        if (checked.length < 2) {
+            messages.push("Debes seleccionar al menos 2 hobbies.");
+        }
+
+        // Validar otros campos del formulario
+        const inputs = form.querySelectorAll("input, textarea, select:not([type='checkbox'])");
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                let label = input.getAttribute("aria-label") || input.name || "Este campo";
+                messages.push(`${label} es requerido.`);
             }
         });
+
+        if (messages.length > 0) {
+            event.preventDefault();
+            alert(messages.join("\n"));
+        }
+        });
+
     </script>
 </body>
 </html>
