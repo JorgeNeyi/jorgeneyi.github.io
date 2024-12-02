@@ -79,41 +79,40 @@
     </form>
 
     <script>
-        function togglePassword()
-        {
+
+        document.getElementById("user-form").addEventListener("submit", function (event) {
+            const form = event.target;
+            let messages = [];
+        
+            // Validar campos obligatorios y patrones
+            const inputs = form.querySelectorAll("input, textarea, select");
+            inputs.forEach(input => {
+                if (!input.checkValidity()) {
+                    let label = input.previousElementSibling ? input.previousElementSibling.textContent : input.name || "Este campo";
+                    messages.push(`${label} es requerido o no es válido.`);
+                }
+            });
+        
+            // Validar que se seleccionen al menos 2 hobbies
+            const hobbies = form.querySelectorAll('input[type="checkbox"][name="hobbies"]');
+            const selectedHobbies = Array.from(hobbies).filter(hobby => hobby.checked);
+        
+            if (selectedHobbies.length < 2) {
+                messages.push("Debes seleccionar al menos 2 aficiones.");
+            }
+        
+            // Mostrar mensajes de error y prevenir envío
+            if (messages.length > 0) {
+                event.preventDefault();
+                alert(messages.join("\n"));
+            }
+        });
+        
+        // Mostrar u ocultar contraseña
+        function togglePassword() {
             const passwordField = document.getElementById("password");
             passwordField.type = passwordField.type === "password" ? "text" : "password";
         }
-
-        document.getElementById("user-form").addEventListener("submit", function (event) {
-        const form = event.target;
-        const checkboxes = form.querySelectorAll('input[type="checkbox"][name="hobbies"]');
-        const checked = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-
-        let messages = [];
-
-
-        // Validar otros campos del formulario
-        const inputs = form.querySelectorAll("input, textarea, select:not([type='checkbox'])");
-        inputs.forEach(input => {
-            if (!input.checkValidity()) {
-                let label = input.getAttribute("aria-label") || input.name || "Este campo";
-                messages.push(`${label} es requerido.`);
-            }
-        });
-
-        if (messages.length > 0) {
-            event.preventDefault();
-            alert(messages.join("\n"));
-        }
-
-                // Validar checkboxes
-        if (checked.length < 2) {
-        messages.push("Debes seleccionar al menos 2 hobbies.");
-        }
-
-        });
-
-    </script>
+    </script>    
 </body>
 </html>
