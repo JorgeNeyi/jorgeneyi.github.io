@@ -22,25 +22,25 @@
         <fieldset>
             <legend>Datos Personales</legend>
             <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" placeholder="Nombre" required>
+            <input type="text" id="name" name="name" placeholder="Nombre">
             <label for="surname">Apellidos</label>
-            <input type="text" id="surname" name="surname" placeholder="Apellidos" required>
+            <input type="text" id="surname" name="surname" placeholder="Apellidos">
             <label for="phone">Teléfono</label>
-            <input type="tel" id="phone" name="phone" placeholder="Ejem: (+34)922123123" required>
+            <input type="tel" id="phone" name="phone" placeholder="Ejem: (+34)922123123">
             <label for="zipcode">Código Postal</label>
-            <input type="text" id="zipcode" name="zipcode" placeholder="38XXX" pattern="\d{5}" required>
+            <input type="text" id="zipcode" name="zipcode" placeholder="38XXX" pattern="\d{5}" >
             <label for="dni">DNI/NIE</label>
-            <select id="dni" name="dni" required>
+            <select id="dni" name="dni">
                 <option value="">--</option>
                 <option value="dni">DNI</option>
                 <option value="nie">NIE</option>
             </select>
-            <input type="text" id="dnie" name="DNI / NIE" placeholder="00000000X" pattern="\d{7}" required>
+            <input type="text" id="dnie" name="DNI / NIE" placeholder="00000000X" pattern="\d{7}">
             <label>Crear cuenta como:</label>
-            <label><input type="radio" name="account_type" value="particular" required> Particular</label>
-            <label><input type="radio" name="account_type" value="empresa" required> Empresa</label>
+            <label><input type="radio" name="account_type" value="particular"> Particular</label>
+            <label><input type="radio" name="account_type" value="empresa"> Empresa</label>
             <label for="birthyear">Año de Nacimiento</label>
-            <select id="birthyear" name="birthyear" required>
+            <select id="birthyear" name="birthyear">
                 <option value="">Seleccione</option>
                 <option value="2010">2010</option>
                 <option value="2009">2009</option>
@@ -70,9 +70,9 @@
         <fieldset>
             <legend>Datos Publicación</legend>
             <label for="title">Título</label>
-            <input type="text" id="title" name="title" placeholder="Título" maxlength="15" required>
+            <input type="text" id="title" name="title" placeholder="Título" maxlength="15">
             <label for="description">Descripción</label>
-            <textarea id="description" name="description" placeholder="Descripción" maxlength="120" required></textarea>
+            <textarea id="description" name="description" placeholder="Descripción" maxlength="120"></textarea>
         </fieldset>
 
         <button type="submit">Enviar</button>
