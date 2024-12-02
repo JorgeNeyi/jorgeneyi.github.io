@@ -92,10 +92,6 @@
 
         let messages = [];
 
-        // Validar checkboxes
-        if (checked.length < 2) {
-            messages.push("Debes seleccionar al menos 2 hobbies.");
-        }
 
         // Validar otros campos del formulario
         const inputs = form.querySelectorAll("input, textarea, select:not([type='checkbox'])");
@@ -110,6 +106,12 @@
             event.preventDefault();
             alert(messages.join("\n"));
         }
+
+                // Validar checkboxes
+        if (checked.length < 2) {
+        messages.push("Debes seleccionar al menos 2 hobbies.");
+        }
+
         });
 
     </script>
